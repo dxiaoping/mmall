@@ -15,7 +15,7 @@ public class PropertiesUtil {
 
     private static Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
 
-    private static Properties props;
+    private static Properties props;//用于加载配置文件
 
     static {
         String fileName = "mmall.properties";
