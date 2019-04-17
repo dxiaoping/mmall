@@ -12,7 +12,7 @@ public class RedisPool {
     private static Integer minIdle = Integer.parseInt(PropertiesUtil.getProperty("redis.min.idle","2"));
     private static Boolean testBorrow = Boolean.parseBoolean(PropertiesUtil.getProperty("redis.test.borrow","true"));
     private static Boolean testReturn = Boolean.parseBoolean(PropertiesUtil.getProperty("redis.test.return","true"));
-
+    private static String password = PropertiesUtil.getProperty("redis.password");
     private static String ip = PropertiesUtil.getProperty("redis.ip");
     private static Integer port = Integer.parseInt(PropertiesUtil.getProperty("redis.port"));
     private static void initPool(){
@@ -24,7 +24,7 @@ public class RedisPool {
         config.setTestOnBorrow(testBorrow);
         config.setTestOnReturn(testReturn);
         config.setBlockWhenExhausted(true);//连接耗尽时是否阻塞
-        pool = new JedisPool(config,ip,port,1000*2);
+        pool = new JedisPool(config,ip,port,1000*2,password);
     }
     static {
         initPool();

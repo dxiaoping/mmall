@@ -82,6 +82,7 @@ public class RedisPoolUtil {
             result = jedis.del(key);
         } catch (Exception e) {
             log.error("del key:{} error",key,e);
+
             RedisPool.returnBrokenResource(jedis);
             return result;
         }
@@ -90,5 +91,6 @@ public class RedisPoolUtil {
     }
 
     public static void main(String[] args) {
+        set("asd","asd");
     }
 }
