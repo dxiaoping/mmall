@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
-<H1>tomcat1</H1>
+<H1>tomcat2</H1>
 <h2>Hello World!</h2>
 springMVC上传文件
 <form name="form1" action="manage/product/upload.do" method="post" enctype="multipart/form-data">
