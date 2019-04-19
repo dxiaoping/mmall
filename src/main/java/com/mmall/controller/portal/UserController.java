@@ -69,6 +69,7 @@ public class UserController {
     public ServerResponse<User> getUserInfo(HttpSession session, HttpServletRequest httpServletRequest){
 //        User user = (User) session.getAttribute(Const.CURRENT_USER);
         String loginToken = CookieUtil.readLoginToken(httpServletRequest);
+        System.out.println(loginToken);
         if (StringUtils.isEmpty(loginToken)){
             return ServerResponse.createByErrorMessage("用户为登陆，无法获取用户信息");
         }

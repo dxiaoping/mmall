@@ -12,9 +12,9 @@ public class RedisPool {
     private static Integer minIdle = Integer.parseInt(PropertiesUtil.getProperty("redis.min.idle","2"));
     private static Boolean testBorrow = Boolean.parseBoolean(PropertiesUtil.getProperty("redis.test.borrow","true"));
     private static Boolean testReturn = Boolean.parseBoolean(PropertiesUtil.getProperty("redis.test.return","true"));
-    private static String password = PropertiesUtil.getProperty("redis.password");
-    private static String ip = PropertiesUtil.getProperty("redis.ip");
-    private static Integer port = Integer.parseInt(PropertiesUtil.getProperty("redis.port"));
+    private static String password = PropertiesUtil.getProperty("redis.password1");
+    private static String ip = PropertiesUtil.getProperty("redis.ip1");
+    private static Integer port = Integer.parseInt(PropertiesUtil.getProperty("redis.port2"));
     private static void initPool(){
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxTotal(maxTotal);
@@ -42,7 +42,9 @@ public class RedisPool {
 
     public static void main(String[] args) {
             Jedis jedis = pool.getResource();
-            jedis.set("name","xp");
+            for(int i =0;i<10;i++){
+                jedis.set("key"+i,"value"+i);
+            }
             returnResource(jedis);
     }
 }
