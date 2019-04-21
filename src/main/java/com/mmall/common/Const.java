@@ -136,6 +136,7 @@ public class Const {
 
         public static PaymentTypeEnum codeOf(int code){
             for(PaymentTypeEnum paymentTypeEnum : values()){
+                System.out.println(paymentTypeEnum.getCode() + "============");
                 if(paymentTypeEnum.getCode() == code){
                     return paymentTypeEnum;
                 }

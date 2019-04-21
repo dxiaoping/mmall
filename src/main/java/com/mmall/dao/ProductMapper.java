@@ -25,4 +25,7 @@ public interface ProductMapper {
     List<Product> selectByNameAndCategoryIds(@Param("productName") String productName,@Param("categoryIdList")List<Integer> categoryIdList);
 
     int selectCartProductCheckedStatusByUserId(Integer userId);
+
+//    int 不能为null，有些商品可能已经删除
+    Integer selectStockByProductId(Integer id);
 }

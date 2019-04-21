@@ -16,8 +16,13 @@ public interface IOrderService {
     ServerResponse getOrderCartProduct(Integer userId);
     ServerResponse<OrderVo> getOrderDetail(Integer userId, Long orderNo);
     ServerResponse<PageInfo> getOrderList(Integer userId, int pageNum, int pageSize);
+
+    //backend
     ServerResponse<PageInfo> manageList(int pageNum,int pageSize);
     ServerResponse<OrderVo> manageDetail(Long orderNo);
     ServerResponse<PageInfo> manageSearch(Long orderNo,int pageNum,int pageSize);
     ServerResponse<String> manageSendGoods(Long orderNo);
+
+    //hour小时后关闭未付款订单
+    void closeOrder(int hour);
 }
