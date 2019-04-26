@@ -30,10 +30,12 @@ public class RedissonManager {
     private void init(){
         try{
             config.useSingleServer().setAddress(new StringBuilder().append(redis1Ip).append(":").append(redis1Port).toString());
+            config.useSingleServer().setPassword(redis1password);
             redisson = (Redisson)Redisson.create(config);
+
             log.info("初始化Redisson结束");
         }catch (Exception e){
-
+            log.info("初始化Redisson异常");
         }
 
     }

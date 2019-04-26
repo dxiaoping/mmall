@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CookieUtil {
 
     private final static String COOKIE_DOMAIN = "mmall.com";//一级域名
-    private final static String COOKIE_NAME = "mmall_login_token";//存于客户端浏览器
+    private final static String COOKIE_NAME = "mmall_login_token";//存于客户端浏览器，该cookie只存于mmall.com下
 
 
     public static String readLoginToken(HttpServletRequest request){
