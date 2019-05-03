@@ -115,9 +115,15 @@ public class ProductManageController {
     //4.商品列表获取
     @RequestMapping(value = "list.do")
     @ResponseBody
-    public ServerResponse getList(HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+    public ServerResponse getList(HttpSession session,HttpServletRequest httpServletRequest, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
 
-        User user = (User) session.getAttribute(Const.CURRENT_USER);
+//        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        String loginToken = CookieUtil.readLoginToken(httpServletRequest);
+        if (org.apache.commons.lang.StringUtils.isEmpty(loginToken)){
+            return ServerResponse.createByErrorMessage("用户未登录");
+        }
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
+        User user = JsonUtil.string2Obj(userJsonStr,User.class);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), "用户未登录，请登陆");
         }
