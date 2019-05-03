@@ -144,8 +144,7 @@ public class RedisShardedPoolUtil {
         System.out.println(aaa);
 
         System.out.println("end");
-
-
+        
     }
 
 }

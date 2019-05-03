@@ -31,7 +31,7 @@ public class SessionExpireFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest)servletRequest;
 
         String loginToken = CookieUtil.readLoginToken(httpServletRequest);
-
+        System.out.println("重置session时间");
         if(StringUtils.isNotEmpty(loginToken)){
             //判断logintoken是否为空或者""；
             //如果不为空的话，符合条件，继续拿user信息
